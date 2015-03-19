@@ -1,0 +1,20 @@
+Source: libturglem
+Priority: extra
+Maintainer: Sergey Bochenkov <ba4an@yandex.ru>
+Standards-Version: 3.8.4
+Section: libs
+Homepage: https://github.com/bachan/libturglem
+
+Package: libturglem-dev
+Section: libdevel
+Architecture: any
+Depends: ${shlibs:Depends},
+         libc6 (>= 2.4),
+         libgcc1 (>= 1:4.1.1),
+         libstdc++6 (>= 4.5.0),
+         libexpat1-dev (>= 2.0),
+         libcoda-dev (>= 0.1.8)
+Description: European languages lemmatizer
+ European languages lemmatizer http://lemmatizer.org/
+ 
+

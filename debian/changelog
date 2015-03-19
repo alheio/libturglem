@@ -1,0 +1,11 @@
+libturglem (0.2.30-2) unstable; urgency=low
+
+  * Most libs became static, libturglem-full.so was added
+
+ -- unknown <zaharov.sy@gmail.com>  Thu, 19 Mar 2015 17:01:00 +0300
+
+libturglem (0.2.30-1) unstable; urgency=low
+
+  * Initial release 
+
+ -- unknown <bachan@farm.itim.vn>  Thu, 20 Jan 2014 17:40:22 +0700
