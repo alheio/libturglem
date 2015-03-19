@@ -1,7 +1,10 @@
 CMAKE_MINIMUM_REQUIRED (VERSION 2.6)
 PROJECT (libturglem)
 
-SET (LIBTURGLEM_VERSION 0.2.30)
+SET (LIBTURGLEM_VERSION_MAJOR 0)
+SET (LIBTURGLEM_VERSION_MINOR 2)
+SET (LIBTURGLEM_VERSION_PATCH 30)
+SET (LIBTURGLEM_VERSION "${LIBTURGLEM_VERSION_MAJOR}.${LIBTURGLEM_VERSION_MINOR}.${LIBTURGLEM_VERSION_PATCH}")
 SET (LIBTURGLEM_RPM_RELEASE 30)
 
 SET (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC -pipe -O3 -fomit-frame-pointer -funroll-loops -DNDEBUG -Wall -Werror")
@@ -39,6 +42,12 @@ ADD_LIBRARY (turglem         SHARED ${SRC_TURG})
 ADD_LIBRARY (turglem-default SHARED ${SRC_TURGDEF})
 ADD_LIBRARY (turglem-english SHARED ${SRC_TURGENG})
 ADD_LIBRARY (turglem-russian SHARED ${SRC_TURGRUS})
+
+SET_TARGET_PROPERTIES (turglem         PROPERTIES VERSION ${LIBTURGLEM_VERSION} SOVERSION ${LIBTURGLEM_VERSION_MAJOR})
+SET_TARGET_PROPERTIES (turglem-default PROPERTIES VERSION ${LIBTURGLEM_VERSION} SOVERSION ${LIBTURGLEM_VERSION_MAJOR})
+SET_TARGET_PROPERTIES (turglem-english PROPERTIES VERSION ${LIBTURGLEM_VERSION} SOVERSION ${LIBTURGLEM_VERSION_MAJOR})
+SET_TARGET_PROPERTIES (turglem-russian PROPERTIES VERSION ${LIBTURGLEM_VERSION} SOVERSION ${LIBTURGLEM_VERSION_MAJOR})
+
 ADD_LIBRARY (turglem-st         STATIC ${SRC_TURG})                                                                                                             
 ADD_LIBRARY (turglem-default-st STATIC ${SRC_TURGDEF})                                                                                                          
 ADD_LIBRARY (turglem-english-st STATIC ${SRC_TURGENG})                                                                                                          
@@ -50,9 +59,9 @@ ADD_EXECUTABLE (lemc_russian src/utils/russian/lemc.cpp)
 ADD_EXECUTABLE (lemq_russian src/utils/russian/lemq.c)
 ADD_EXECUTABLE (auto_utility src/utils/auto.c)
 
-TARGET_LINK_LIBRARIES (lemc_english turglem-english coda ${LEXPAT})
+TARGET_LINK_LIBRARIES (lemc_english turglem-english ${LCODA} ${LEXPAT})
 TARGET_LINK_LIBRARIES (lemq_english turglem-english turglem ${LMAFSA})
-TARGET_LINK_LIBRARIES (lemc_russian turglem-russian coda ${LEXPAT})
+TARGET_LINK_LIBRARIES (lemc_russian turglem-russian ${LCODA} ${LEXPAT})
 TARGET_LINK_LIBRARIES (lemq_russian turglem-russian turglem ${LMAFSA})
 TARGET_LINK_LIBRARIES (auto_utility turglem-default turglem-english turglem-russian ${LMAFSA})
 
